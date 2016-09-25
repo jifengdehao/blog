@@ -1,0 +1,20 @@
+$ npm install express-generator -g // 安装express 
+$ express -e  myapp //使用ejs 模版
+
+$ npm install -g supervisor //安装 supervisor
+
+//修好 packjson 的启动方式 
+"scripts": {
+    "start": "supervisor ./bin/www"
+ }
+//暴露路由
+module.exports=function(app){	
+
+	app.get('/',function(req,res,next){
+		//res.send('这是我导出去！！');
+		  res.render('index', { title: 'index' });
+	})
+}
+//在app.js引用 
+var routes= require('./config/routes');
+routes(app);
