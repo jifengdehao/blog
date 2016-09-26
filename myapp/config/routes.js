@@ -1,3 +1,5 @@
+var ModelUser=require('../model/user');
+//console.log(ModelUser);
 module.exports=function(app){
 	
 	app.get('/',function(req,res,next){
@@ -15,5 +17,22 @@ module.exports=function(app){
 	app.get('/logout',function(req,res,next){
 		res.send('登出');	  
 	});
+	
+	app.post("/reg",function(req,res,next){
+	
+		var postData={
+			name:req.body.name,
+			password:req.body.password
+		}
+		//console.log(postData);
+		ModelUser.create(postData,function(error,data){
+			if(error){
+				console.log(error);
+			}
+			console.log(data);
+			res.send(data);
+		})
+		//res.send("注册成功")
+	})
 	
 }

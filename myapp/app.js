@@ -5,11 +5,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session)
+//console.log(MongoStore);
+//console.log(session);
+//加载数据库
+mongoose.connect('mongodb://localhost/blogOne');
+
 /*var routes = require('./routes/index');
 var users = require('./routes/users');*/
 
 var routes= require('./config/routes');
-var config= require('./config/config');
+//var config= require('./config/config');
 
 
 
@@ -31,6 +39,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+    secret: '123456',
+    store: new MongoStore({
+    		cookieSecret: 'jifengdehao',
+    		url:'mongodb://localhost/blogOne'
+    })
+}));
+
+
 
 
 
