@@ -18,3 +18,8 @@ module.exports=function(app){
 //在app.js引用 
 var routes= require('./config/routes');
 routes(app);
+
+//启动mongodb
+C:\mongodb\bin
+mongod.exe --dbpath="C:\mongodb\data"
+

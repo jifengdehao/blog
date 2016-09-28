@@ -11,9 +11,30 @@ module.exports=function(app){
 		res.render('reg', { title: '注册' });
 	});
 	app.get('/login',function(req,res,next){
-		//res.send('登录');	  
+		//res.send('登录');		
 		res.render('login', { title: '登录' });
 	});
+	app.post("/login",function(req,res,next){
+		var postData={
+			name:req.body.name
+		}
+		ModelUser.findOne(postData,function(error,data){
+			if(error){ console.log(error);}
+			
+			if(data){
+				if(data.password==req.body.password){
+					res.send("登录成功");
+				}else{
+					res.send("密码错误");
+				}
+			}else{
+				res.send("没有此用户");
+			}
+		})
+		//res.send(postData);
+	});
+	
+	
 	app.get('/logout',function(req,res,next){
 		res.send('登出');	  
 	});

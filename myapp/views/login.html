@@ -1,3 +1,11 @@
 <% include common/header.html %>
-登录
+<form action="/login" method="post">
+	<div>
+		<label>昵称:</label>
+		<input type="text" name="name" id="name" value="" placeholder="昵称"/></div>
+	<div>
+		<label>密码:</label>
+		<input type="text" name="password" id="password" value="" placeholder="密码"/></div>
+	<div><input type="submit" name="" id="" value="登录" /></div>
+</form>
 <% include common/footer.html %>

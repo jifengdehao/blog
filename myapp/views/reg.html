@@ -1,7 +1,11 @@
 <% include common/header.html %>
 <form method="post" action="/reg">
-	<p><input type="text" name="name" id="name" value="" /></p>
-	<p><input type="text" name="password" id="password" value="" /></p>
-	<p><input type="submit" name="" id="" value="注册" /></p>
+	<div>
+		<label>昵称:</label>
+		<input type="text" name="name" id="name" value="" placeholder="昵称"/></div>
+	<div>
+		<label>密码:</label>
+		<input type="password" name="password" id="password" value="" placeholder="密码"/></div>
+	<div><input type="submit" name="" id="" value="注册" /></div>
 </form>
 <% include common/footer.html %>
