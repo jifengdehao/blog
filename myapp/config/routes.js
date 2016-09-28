@@ -45,15 +45,24 @@ module.exports=function(app){
 			name:req.body.name,
 			password:req.body.password
 		}
-		//console.log(postData);
-		ModelUser.create(postData,function(error,data){
-			if(error){
-				console.log(error);
+		ModelUser.findOne({name:req.body.name},function(err,data){
+			if(err){
+				console.log(err);
 			}
-			console.log(data);
-			res.send(data);
-		})
-		//res.send("注册成功")
+			if(data){
+				res.send("用户已注册！");
+			}else{
+				ModelUser.create(postData,function(error,data){
+					if(error){
+						console.log(error);
+					}
+					console.log(data);
+					res.send(data);
+				})
+				
+			}
+		});
+		
 	})
 	
 }
