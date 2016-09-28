@@ -2,6 +2,20 @@ var ModelUser=require('../model/user');
 //console.log(ModelUser);
 module.exports=function(app){
 	
+	//中间件
+	app.use(function(req,res,next){
+		var user=req.session.user;
+		if(user){
+			app.locals.user=user;
+		}else{
+			app.locals.user=user;
+		}
+		console.log(user);
+		next();
+	});
+	
+	
+	
 	app.get('/',function(req,res,next){
 		//res.send('这是我导出去！！');
 		  res.render('index', { title: '首页' });
@@ -23,7 +37,10 @@ module.exports=function(app){
 			
 			if(data){
 				if(data.password==req.body.password){
-					res.send("登录成功");
+				    req.session.user=data;
+				    
+					res.redirect("/user/"+data._id);
+					
 				}else{
 					res.send("密码错误");
 				}
@@ -36,7 +53,8 @@ module.exports=function(app){
 	
 	
 	app.get('/logout',function(req,res,next){
-		res.send('登出');	  
+		delete req.session.user;
+		res.redirect('/');  
 	});
 	
 	app.post("/reg",function(req,res,next){
@@ -55,14 +73,20 @@ module.exports=function(app){
 				ModelUser.create(postData,function(error,data){
 					if(error){
 						console.log(error);
-					}
-					console.log(data);
+					}		
+					res.session.user=data;
+					
 					res.send(data);
 				})
 				
 			}
 		});
 		
-	})
+	});
+	
+	
+	app.get('/user/:_id',function(req,res,next){
+		res.send('用户中心正在开发')
+	});
 	
 }
