@@ -10,6 +10,10 @@
     		color: #333;
     		background-color: #fff;
 }
+h1{
+	margin: 0;
+	font-size: 18px;
+}
 .nav{
 	height: 100px;
 	width: 100%;
@@ -29,4 +33,11 @@
 	color: #FFFFFF;
 	font-size: 16px;
 	text-decoration: none;
+}
+.form{
+	padding-left: 100px;
+	margin: 50px 0 0 0;
+}
+.form-group{
+	margin: 10px;
 }

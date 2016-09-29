@@ -13,6 +13,8 @@
  	<li><a href="/">首页</a></li>
  	<% if(user){ %>
  	<li><a href="/user/<%=user._id%>"><%=user.name%></a></li>
+ 	<li><a href="/add">发表</a></li>
+ 	<li><a href="/view">查看发表内容</a></li>
  	<li><a href="/logout">登出</a></li>
  	<%}else { %>
  	<li><a href="/login">登录</a></li>

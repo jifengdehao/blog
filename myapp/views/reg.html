@@ -1,12 +1,17 @@
 <% include common/header.html %>
-<h1>注册</h2>
-<form method="post" action="/reg">
-	<div>
+
+<form method="post" action="/reg" class="form">
+	<h1><%=title%></h1>
+	<div class="form-group">
 		<label>昵称:</label>
-		<input type="text" name="name" id="name" value="" placeholder="昵称"/></div>
-	<div>
+		<input type="text" name="name" id="name" value="" placeholder="昵称"/>
+	</div>
+	<div class="form-group">
 		<label>密码:</label>
-		<input type="password" name="password" id="password" value="" placeholder="密码"/></div>
-	<div><input type="submit" name="" id="" value="注册" /></div>
+		<input type="password" name="password" id="password" value="" placeholder="密码"/>
+	</div>
+	<div class="form-group">
+		<input type="submit" name="" id="" value="注册" />
+	</div>
 </form>
 <% include common/footer.html %>
